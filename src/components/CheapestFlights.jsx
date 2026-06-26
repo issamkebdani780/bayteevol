@@ -1,40 +1,127 @@
-import { Plane, ArrowRight } from 'lucide-react'
+import { Calendar, Briefcase, ChevronRight, Plane } from 'lucide-react'
 
 export default function CheapestFlights() {
   const flights = [
-    { from: 'ALG', to: 'IST', airline: 'Turkish Airlines', price: '€199', time: '10:30 AM', date: 'Tomorrow' },
-    { from: 'ALG', to: 'CDG', airline: 'Air France', price: '€145', time: '02:15 PM', date: 'Today' },
-    { from: 'ALG', to: 'DXB', airline: 'Emirates', price: '€320', time: '11:45 PM', date: 'Next Week' },
-    { from: 'ALG', to: 'DOH', airline: 'Qatar Airways', price: '€390', time: '08:00 AM', date: 'In 2 Days' },
+    { 
+      date: 'Aller 03 juil. 2026', 
+      depTime: '11:45', depCode: 'ALG', depCity: 'Algiers', 
+      arrTime: '15:25', arrCode: 'CAI', arrCity: 'Cairo', 
+      duration: '19h:50m', stops: '1 escale', 
+      airline: 'Air Algerie', baggage: 'Avec bagage économique', 
+      price: '43 559 DZD', type: 'Aller simple' 
+    },
+    { 
+      date: 'Aller 05 juil. 2026', 
+      depTime: '09:00', depCode: 'ALG', depCity: 'Algiers', 
+      arrTime: '14:20', arrCode: 'IST', arrCity: 'Istanbul', 
+      duration: '4h:20m', stops: 'Direct', 
+      airline: 'Turkish Airlines', baggage: 'Bagage cabine', 
+      price: '52 100 DZD', type: 'Aller simple' 
+    },
+    { 
+      date: 'Aller 10 juil. 2026', 
+      depTime: '08:30', depCode: 'ALG', depCity: 'Algiers', 
+      arrTime: '11:15', arrCode: 'CDG', arrCity: 'Paris', 
+      duration: '2h:45m', stops: 'Direct', 
+      airline: 'Air France', baggage: 'Avec bagage soute', 
+      price: '38 900 DZD', type: 'Aller simple' 
+    },
   ]
 
   return (
-    <section className="py-24 bg-brand-emerald-50 dark:bg-brand-emerald-950" id="deals">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+    <section className="py-32 bg-[#faf9f8] dark:bg-[#0f172a]" id="deals">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div>
-            <h2 className="text-4xl font-serif font-bold mb-4 text-brand-emerald-900 dark:text-white">Cheapest Flights Today</h2>
-            <p className="text-lg text-brand-emerald-600 dark:text-brand-emerald-300">Live prices from Algiers to popular destinations.</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-[#1a2b3c] dark:text-white">
+              Cheapest Flights Today
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400">
+              Live prices from Algiers to popular destinations.
+            </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-col gap-6">
           {flights.map((flight, idx) => (
-            <div key={idx} className="bg-white dark:bg-brand-emerald-900 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all border border-brand-emerald-100 dark:border-brand-emerald-800 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-brand-gold-500/10 rounded-bl-full -z-0 transition-transform group-hover:scale-150" />
-              <div className="relative z-10">
-                <div className="text-sm font-medium text-brand-emerald-500 mb-4">{flight.date} • {flight.time}</div>
-                <div className="flex justify-between items-center mb-6">
-                  <div className="text-3xl font-bold font-serif text-brand-emerald-900 dark:text-white">{flight.from}</div>
-                  <Plane className="text-brand-gold-500" />
-                  <div className="text-3xl font-bold font-serif text-brand-emerald-900 dark:text-white">{flight.to}</div>
+            <div 
+              key={idx} 
+              className="bg-white dark:bg-[#1a2b3c]/80 rounded-[1.5rem] p-6 lg:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col lg:flex-row gap-8 lg:gap-12"
+            >
+              {/* Left Side: Flight Info */}
+              <div className="flex-grow flex flex-col justify-between">
+                {/* Date Header */}
+                <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 font-medium mb-6">
+                  <Calendar size={18} />
+                  <span>{flight.date}</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium text-brand-emerald-600 dark:text-brand-emerald-400">{flight.airline}</div>
-                  <div className="text-2xl font-bold text-brand-gold-600 dark:text-brand-gold-500">{flight.price}</div>
+                
+                {/* Main Row */}
+                <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-6">
+                  {/* Airline */}
+                  <div className="w-24 font-bold text-[#1a2b3c] dark:text-white">
+                    {flight.airline}
+                  </div>
+                  
+                  {/* Departure */}
+                  <div className="flex flex-col items-center min-w-[80px]">
+                    <span className="text-2xl font-bold text-[#1a2b3c] dark:text-white">{flight.depTime}</span>
+                    <span className="text-[#d4af37] font-bold text-lg">{flight.depCode}</span>
+                    <span className="text-sm text-slate-500 dark:text-slate-400">({flight.depCity})</span>
+                  </div>
+                  
+                  {/* Route Line */}
+                  <div className="flex-grow hidden md:flex flex-col items-center px-4">
+                    <div className="text-sm text-slate-500 dark:text-slate-400 mb-1 flex items-center gap-2">
+                      {flight.duration}
+                    </div>
+                    <div className="w-full flex items-center">
+                      <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                      <div className="flex-grow h-px bg-gray-300 dark:bg-gray-600 relative">
+                        <Plane size={14} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-400" />
+                      </div>
+                      <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                    </div>
+                    <div className="text-sm font-medium text-slate-600 dark:text-slate-400 mt-1">
+                      {flight.stops}
+                    </div>
+                  </div>
+                  
+                  {/* Arrival */}
+                  <div className="flex flex-col items-center min-w-[80px]">
+                    <span className="text-2xl font-bold text-[#1a2b3c] dark:text-white">{flight.arrTime}</span>
+                    <span className="text-[#d4af37] font-bold text-lg">{flight.arrCode}</span>
+                    <span className="text-sm text-slate-500 dark:text-slate-400">({flight.arrCity})</span>
+                  </div>
+                  
+                  {/* Baggage */}
+                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 max-w-[120px] text-center">
+                    <Briefcase size={16} className="flex-shrink-0" />
+                    <span>{flight.baggage}</span>
+                  </div>
+
+                  {/* Details Button */}
+                  <div className="hidden xl:block">
+                    <button className="px-4 py-2 rounded-lg border border-[#1a2b3c] dark:border-white/20 text-[#1a2b3c] dark:text-white font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-1 text-sm">
+                      Détails <ChevronRight size={16} />
+                    </button>
+                  </div>
                 </div>
-                <button className="w-full mt-6 bg-brand-emerald-50 dark:bg-brand-emerald-950 text-brand-emerald-900 dark:text-white font-semibold py-3 rounded-xl border border-brand-emerald-200 dark:border-brand-emerald-800 group-hover:bg-brand-gold-600 group-hover:text-white group-hover:border-transparent transition-all flex items-center justify-center gap-2">
-                  Book <ArrowRight size={16} />
+              </div>
+              
+              {/* Right Side: Pricing */}
+              <div className="lg:w-64 lg:pl-8 lg:border-l border-gray-100 dark:border-gray-800 flex flex-col items-center lg:items-end justify-center gap-3 mt-4 lg:mt-0">
+                <a href="#" className="text-[#3b82f6] hover:underline text-sm font-medium mb-1">
+                  Détails du vol
+                </a>
+                <div className="text-3xl font-bold text-[#1a2b3c] dark:text-white whitespace-nowrap">
+                  {flight.price}
+                </div>
+                <div className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2">
+                  {flight.type}
+                </div>
+                <button className="w-full bg-[#1e2b3c] hover:bg-[#0f172a] dark:bg-[#d4af37] dark:hover:bg-[#c39b6b] text-white dark:text-[#1a2b3c] font-bold py-3 px-6 rounded-xl transition-colors shadow-md text-center">
+                  Réserver ce vol
                 </button>
               </div>
             </div>
