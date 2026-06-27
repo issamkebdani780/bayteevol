@@ -66,10 +66,10 @@ export default function Testimonials() {
   const TestimonialCard = ({ data }) => (
     <div className={`w-[350px] md:w-[400px] flex-shrink-0 p-8 rounded-3xl shadow-sm border ${
       data.highlight 
-        ? 'bg-[#1a2b3c] text-white border-transparent shadow-xl' 
-        : 'bg-white dark:bg-[#1a2b3c]/50 text-[#1a2b3c] dark:text-white border-gray-100 dark:border-gray-800'
+        ? 'bg-brand-emerald-900 text-white border-transparent shadow-xl' 
+        : 'bg-white dark:bg-brand-emerald-900/50 text-brand-emerald-900 dark:text-white border-gray-100 dark:border-gray-800'
     } transition-transform hover:-translate-y-2 duration-300 flex flex-col h-[280px]`}>
-      <div className="flex gap-1 mb-6 text-[#d4af37]">
+      <div className="flex gap-1 mb-6 text-brand-gold-500">
         {[...Array(5)].map((_, j) => <Star key={j} size={18} fill="currentColor" stroke="none" />)}
       </div>
       <p className={`mb-8 text-[15px] leading-relaxed font-medium whitespace-normal ${data.highlight ? 'text-gray-200' : 'text-slate-600 dark:text-slate-300'}`}>
@@ -79,7 +79,7 @@ export default function Testimonials() {
         <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm ${
           data.highlight 
             ? 'bg-white/20 text-white' 
-            : 'bg-[#f4f5f6] dark:bg-gray-800 text-[#1a2b3c] dark:text-white'
+            : 'bg-brand-emerald-50 dark:bg-gray-800 text-brand-emerald-900 dark:text-white'
         }`}>
           {data.initials}
         </div>
@@ -94,9 +94,9 @@ export default function Testimonials() {
   )
 
   return (
-    <section className="py-32 bg-[#faf9f8] dark:bg-[#0f172a] overflow-hidden">
+    <section className="py-32 bg-brand-emerald-50 dark:bg-brand-emerald-950 overflow-hidden">
       <div className="text-center mb-16 container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-[#1a2b3c] dark:text-white">
+        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-brand-emerald-900 dark:text-white">
           Loved by Travelers Worldwide
         </h2>
         <p className="text-xl text-slate-600 dark:text-slate-400">

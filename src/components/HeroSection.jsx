@@ -18,16 +18,16 @@ export default function HeroSection() {
       <div className="container mx-auto px-6 relative z-10 text-center">
         <div className="relative">
           {/* Floating UI Element (Abstract Ticket) */}
-          <div className="absolute -top-12 -left-2 ml-10 lg:-left-24 hidden md:flex flex-col gap-3 bg-[#e9e1d8] p-5 rounded-3xl shadow-xl w-56 text-left floating-ticket z-20">
-            <div className="flex justify-between items-center text-[15px] font-extrabold text-[#1a2b3c] tracking-wide">
+          <div className="absolute -top-12 -left-2 ml-10 lg:-left-24 hidden md:flex flex-col gap-3 bg-brand-gold-100 p-5 rounded-3xl shadow-xl w-56 text-left floating-ticket z-20">
+            <div className="flex justify-between items-center text-[15px] font-extrabold text-brand-emerald-900 tracking-wide">
               <span>ALG</span>
-              <Plane size={16} strokeWidth={2} className="text-[#1a2b3c]" />
+              <Plane size={16} strokeWidth={2} className="text-brand-emerald-900" />
               <span>IST</span>
             </div>
-            <div className="h-2 bg-[#cbd5e1] rounded-full w-full overflow-hidden">
-              <div className="h-full bg-[#c9a775] w-[55%] rounded-full" />
+            <div className="h-2 bg-brand-emerald-200 rounded-full w-full overflow-hidden">
+              <div className="h-full bg-brand-gold-500 w-[55%] rounded-full" />
             </div>
-            <div className="text-[14px] font-medium text-[#1a2b3c] mt-1">Live AI Routing...</div>
+            <div className="text-[14px] font-medium text-brand-emerald-900 mt-1">Live AI Routing...</div>
           </div>
 
           {/* Second Floating Element (Price Drop Alert) */}

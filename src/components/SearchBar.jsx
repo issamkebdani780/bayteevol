@@ -81,7 +81,7 @@ export default function SearchBar({ containerClassName }) {
       </div>
 
       {/* Main Search Bar */}
-      <div className="flex flex-col lg:flex-row items-stretch lg:items-center bg-white dark:bg-[#1e2b3c] rounded-[1.5rem] shadow-md p-1.5 gap-2 lg:gap-0 mt-2 relative">
+      <div className="flex flex-col lg:flex-row items-stretch lg:items-center bg-white dark:bg-brand-emerald-900 rounded-[1.5rem] shadow-md p-1.5 gap-2 lg:gap-0 mt-2 relative">
 
         {/* De... & À... */}
         <div className="flex flex-col md:flex-row flex-[1.5] relative">
@@ -92,10 +92,10 @@ export default function SearchBar({ containerClassName }) {
               value={origin}
               onChange={(e) => setOrigin(e.target.value)}
               onFocus={() => { setShowOrigin(true); setShowDest(false); setShowCalendar(false); setShowPassengers(false); }}
-              className="w-full pl-6 pr-10 py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white placeholder-slate-400 font-bold text-xl cursor-pointer"
+              className="w-full pl-6 pr-10 py-4 outline-none bg-transparent text-brand-emerald-900 dark:text-white placeholder-slate-400 font-bold text-xl cursor-pointer"
             />
             {showOrigin && (
-              <div className="absolute top-[calc(100%+8px)] left-0 bg-white dark:bg-[#1a2b3c] rounded-[1rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-2 z-50 w-full min-w-[320px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-2">
+              <div className="absolute top-[calc(100%+8px)] left-0 bg-white dark:bg-brand-emerald-900 rounded-[1rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-2 z-50 w-full min-w-[320px] text-brand-emerald-900 dark:text-white animate-in fade-in slide-in-from-top-2">
                 <div className="max-h-64 overflow-y-auto scrollbar-thin">
                   {MOCK_AIRPORTS.map((airport, idx) => (
                     <div key={idx} onClick={() => { setOrigin(airport.name); setShowOrigin(false); setShowDest(true); }} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-xl cursor-pointer transition-colors group">
@@ -108,7 +108,7 @@ export default function SearchBar({ containerClassName }) {
                           <div className="text-gray-500 dark:text-gray-400 text-[13px]">{airport.location}</div>
                         </div>
                       </div>
-                      <div className="bg-[#fff3eb] text-[#ff6a00] font-bold text-sm px-2 py-1 rounded-md">{airport.code}</div>
+                      <div className="bg-brand-gold-50 text-brand-gold-600 font-bold text-sm px-2 py-1 rounded-md">{airport.code}</div>
                     </div>
                   ))}
                 </div>
@@ -117,7 +117,7 @@ export default function SearchBar({ containerClassName }) {
           </div>
 
           {/* Swap button md */}
-          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-gray-100 dark:border-gray-700 bg-white dark:bg-[#1e2b3c] text-[#ff6a00] items-center justify-center hover:bg-gray-50 dark:hover:bg-[#1a2b3c] transition-all cursor-pointer shadow-sm">
+          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-gray-100 dark:border-gray-700 bg-white dark:bg-brand-emerald-900 text-brand-gold-600 items-center justify-center hover:bg-gray-50 dark:hover:bg-brand-emerald-900 transition-all cursor-pointer shadow-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M17 10h-14l4-4" />
               <path d="M7 14h14l-4 4" />
@@ -131,10 +131,10 @@ export default function SearchBar({ containerClassName }) {
               value={dest}
               onChange={(e) => setDest(e.target.value)}
               onFocus={() => { setShowDest(true); setShowOrigin(false); setShowCalendar(false); setShowPassengers(false); }}
-              className="w-full pl-6 md:pl-10 pr-6 py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white placeholder-slate-400 font-bold text-xl cursor-pointer"
+              className="w-full pl-6 md:pl-10 pr-6 py-4 outline-none bg-transparent text-brand-emerald-900 dark:text-white placeholder-slate-400 font-bold text-xl cursor-pointer"
             />
             {showDest && (
-              <div className="absolute top-[calc(100%+8px)] left-0 md:left-4 bg-white dark:bg-[#1a2b3c] rounded-[1rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-2 z-50 w-full min-w-[320px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-2">
+              <div className="absolute top-[calc(100%+8px)] left-0 md:left-4 bg-white dark:bg-brand-emerald-900 rounded-[1rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-2 z-50 w-full min-w-[320px] text-brand-emerald-900 dark:text-white animate-in fade-in slide-in-from-top-2">
                 <div className="max-h-64 overflow-y-auto scrollbar-thin">
                   {MOCK_AIRPORTS.map((airport, idx) => (
                     <div key={idx} onClick={() => { setDest(airport.name); setShowDest(false); setShowCalendar(true); setActiveDateInput('aller'); }} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-xl cursor-pointer transition-colors group">
@@ -147,7 +147,7 @@ export default function SearchBar({ containerClassName }) {
                           <div className="text-gray-500 dark:text-gray-400 text-[13px]">{airport.location}</div>
                         </div>
                       </div>
-                      <div className="bg-[#fff3eb] text-[#ff6a00] font-bold text-sm px-2 py-1 rounded-md">{airport.code}</div>
+                      <div className="bg-brand-gold-50 text-brand-gold-600 font-bold text-sm px-2 py-1 rounded-md">{airport.code}</div>
                     </div>
                   ))}
                 </div>
@@ -166,7 +166,7 @@ export default function SearchBar({ containerClassName }) {
             value={dateAller}
             readOnly
             onClick={() => { setShowCalendar(true); setActiveDateInput('aller'); setShowOrigin(false); setShowDest(false); setShowPassengers(false); }}
-            className={`w-full px-5 py-4 outline-none bg-transparent placeholder-slate-400 font-bold text-[16px] cursor-pointer ${activeDateInput === 'aller' && showCalendar ? 'text-brand-gold-500' : 'text-[#1e2b3c] dark:text-white'}`}
+            className={`w-full px-5 py-4 outline-none bg-transparent placeholder-slate-400 font-bold text-[16px] cursor-pointer ${activeDateInput === 'aller' && showCalendar ? 'text-brand-gold-500' : 'text-brand-emerald-900 dark:text-white'}`}
           />
         </div>
 
@@ -179,7 +179,7 @@ export default function SearchBar({ containerClassName }) {
             value={dateRetour}
             readOnly
             onClick={() => { setShowCalendar(true); setActiveDateInput('retour'); setShowOrigin(false); setShowDest(false); setShowPassengers(false); }}
-            className={`w-full px-5 py-4 outline-none bg-transparent placeholder-slate-400 font-bold text-[16px] cursor-pointer ${activeDateInput === 'retour' && showCalendar ? 'text-brand-gold-500' : 'text-[#1e2b3c] dark:text-white'}`}
+            className={`w-full px-5 py-4 outline-none bg-transparent placeholder-slate-400 font-bold text-[16px] cursor-pointer ${activeDateInput === 'retour' && showCalendar ? 'text-brand-gold-500' : 'text-brand-emerald-900 dark:text-white'}`}
           />
         </div>
 
@@ -192,10 +192,10 @@ export default function SearchBar({ containerClassName }) {
             value={`${adults + children + infants} passager${adults + children + infants > 1 ? 's' : ''}, économique`}
             readOnly
             onClick={() => { setShowPassengers(!showPassengers); setShowCalendar(false); setShowOrigin(false); setShowDest(false); }}
-            className="w-full py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white font-bold text-[15px] cursor-pointer"
+            className="w-full py-4 outline-none bg-transparent text-brand-emerald-900 dark:text-white font-bold text-[15px] cursor-pointer"
           />
           {showPassengers && (
-            <div className="absolute top-[calc(100%+8px)] right-0 bg-white dark:bg-[#1a2b3c] rounded-[1.5rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-6 z-50 w-full min-w-[340px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-2">
+            <div className="absolute top-[calc(100%+8px)] right-0 bg-white dark:bg-brand-emerald-900 rounded-[1.5rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-6 z-50 w-full min-w-[340px] text-brand-emerald-900 dark:text-white animate-in fade-in slide-in-from-top-2">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-bold text-[17px]">Passagers</h3>
                 <button onClick={() => setShowPassengers(false)} className="text-gray-400 hover:text-gray-600">
@@ -243,14 +243,14 @@ export default function SearchBar({ containerClassName }) {
             </div>
           )}
 
-          <button onClick={() => navigate('/search')} className="w-14 h-14 rounded-2xl bg-[#ff6a00] hover:bg-[#e65f00] text-white flex items-center justify-center transition-all shadow-md flex-shrink-0 cursor-pointer z-10">
+          <button onClick={() => navigate('/search')} className="w-14 h-14 rounded-2xl bg-brand-gold-600 hover:bg-brand-gold-700 text-white flex items-center justify-center transition-all shadow-md flex-shrink-0 cursor-pointer z-10">
             <Search size={24} strokeWidth={2.5} />
           </button>
         </div>
 
         {/* Mock Calendar Popover */}
         {showCalendar && (
-          <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-[35%] xl:left-[38%] bg-white dark:bg-[#1a2b3c] rounded-[1.5rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-6 z-50 w-full max-w-[600px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-4 duration-200">
+          <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-[35%] xl:left-[38%] bg-white dark:bg-brand-emerald-900 rounded-[1.5rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-6 z-50 w-full max-w-[600px] text-brand-emerald-900 dark:text-white animate-in fade-in slide-in-from-top-4 duration-200">
             <div className="flex items-center justify-between mb-6">
               <button className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full text-slate-400 hover:text-slate-600 transition-colors">
                 <ChevronLeft size={20} />

@@ -116,7 +116,7 @@ export default function PricePrediction() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
                 whileHover={{ scale: 1.02 }}
-                className="flex items-start gap-5 p-6 rounded-3xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800/50 shadow-sm cursor-default transition-all"
+                className="flex items-start gap-5 p-6 rounded-3xl bg-brand-gold-50 dark:bg-orange-900/20 border border-brand-gold-200 dark:border-orange-800/50 shadow-sm cursor-default transition-all"
               >
                 <div className="bg-orange-200 dark:bg-orange-800/50 p-3 rounded-2xl shrink-0">
                   <TrendingUp className="text-orange-700 dark:text-orange-400" size={28} />

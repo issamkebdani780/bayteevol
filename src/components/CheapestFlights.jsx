@@ -29,11 +29,11 @@ export default function CheapestFlights() {
   ]
 
   return (
-    <section className="py-32 bg-[#faf9f8] dark:bg-[#0f172a]" id="deals">
+    <section className="py-32 bg-brand-emerald-50 dark:bg-brand-emerald-950" id="deals">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-[#1a2b3c] dark:text-white">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-brand-emerald-900 dark:text-white">
               Cheapest Flights Today
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-400">
@@ -46,7 +46,7 @@ export default function CheapestFlights() {
           {flights.map((flight, idx) => (
             <div 
               key={idx} 
-              className="bg-white dark:bg-[#1a2b3c]/80 rounded-[1.5rem] p-6 lg:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col lg:flex-row gap-8 lg:gap-12"
+              className="bg-white dark:bg-brand-emerald-900/80 rounded-[1.5rem] p-6 lg:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col lg:flex-row gap-8 lg:gap-12"
             >
               {/* Left Side: Flight Info */}
               <div className="flex-grow flex flex-col justify-between">
@@ -59,14 +59,14 @@ export default function CheapestFlights() {
                 {/* Main Row */}
                 <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-6">
                   {/* Airline */}
-                  <div className="w-24 font-bold text-[#1a2b3c] dark:text-white">
+                  <div className="w-24 font-bold text-brand-emerald-900 dark:text-white">
                     {flight.airline}
                   </div>
                   
                   {/* Departure */}
                   <div className="flex flex-col items-center min-w-[80px]">
-                    <span className="text-2xl font-bold text-[#1a2b3c] dark:text-white">{flight.depTime}</span>
-                    <span className="text-[#d4af37] font-bold text-lg">{flight.depCode}</span>
+                    <span className="text-2xl font-bold text-brand-emerald-900 dark:text-white">{flight.depTime}</span>
+                    <span className="text-brand-gold-500 font-bold text-lg">{flight.depCode}</span>
                     <span className="text-sm text-slate-500 dark:text-slate-400">({flight.depCity})</span>
                   </div>
                   
@@ -89,8 +89,8 @@ export default function CheapestFlights() {
                   
                   {/* Arrival */}
                   <div className="flex flex-col items-center min-w-[80px]">
-                    <span className="text-2xl font-bold text-[#1a2b3c] dark:text-white">{flight.arrTime}</span>
-                    <span className="text-[#d4af37] font-bold text-lg">{flight.arrCode}</span>
+                    <span className="text-2xl font-bold text-brand-emerald-900 dark:text-white">{flight.arrTime}</span>
+                    <span className="text-brand-gold-500 font-bold text-lg">{flight.arrCode}</span>
                     <span className="text-sm text-slate-500 dark:text-slate-400">({flight.arrCity})</span>
                   </div>
                   
@@ -102,7 +102,7 @@ export default function CheapestFlights() {
 
                   {/* Details Button */}
                   <div className="hidden xl:block">
-                    <button className="px-4 py-2 rounded-lg border border-[#1a2b3c] dark:border-white/20 text-[#1a2b3c] dark:text-white font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-1 text-sm">
+                    <button className="px-4 py-2 rounded-lg border border-brand-emerald-900 dark:border-white/20 text-brand-emerald-900 dark:text-white font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-1 text-sm">
                       Détails <ChevronRight size={16} />
                     </button>
                   </div>
@@ -114,13 +114,13 @@ export default function CheapestFlights() {
                 <a href="#" className="text-[#3b82f6] hover:underline text-sm font-medium mb-1">
                   Détails du vol
                 </a>
-                <div className="text-3xl font-bold text-[#1a2b3c] dark:text-white whitespace-nowrap">
+                <div className="text-3xl font-bold text-brand-emerald-900 dark:text-white whitespace-nowrap">
                   {flight.price}
                 </div>
                 <div className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2">
                   {flight.type}
                 </div>
-                <button className="w-full bg-[#1e2b3c] hover:bg-[#0f172a] dark:bg-[#d4af37] dark:hover:bg-[#c39b6b] text-white dark:text-[#1a2b3c] font-bold py-3 px-6 rounded-xl transition-colors shadow-md text-center">
+                <button className="w-full bg-brand-emerald-900 hover:bg-brand-emerald-950 dark:bg-brand-gold-500 dark:hover:bg-brand-gold-600 text-white dark:text-brand-emerald-900 font-bold py-3 px-6 rounded-xl transition-colors shadow-md text-center">
                   Réserver ce vol
                 </button>
               </div>
