@@ -33,6 +33,7 @@ export default function HeroSection() {
     } else {
       setDateRetour(dateStr);
       setShowCalendar(false);
+      setShowPassengers(true);
     }
   }
 
@@ -153,7 +154,7 @@ export default function HeroSection() {
                       <div className="absolute top-[calc(100%+8px)] left-0 bg-white dark:bg-[#1a2b3c] rounded-[1rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-2 z-50 w-full min-w-[320px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-2">
                         <div className="max-h-64 overflow-y-auto scrollbar-thin">
                           {MOCK_AIRPORTS.map((airport, idx) => (
-                            <div key={idx} onClick={() => { setOrigin(airport.name); setShowOrigin(false); }} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-xl cursor-pointer transition-colors group">
+                            <div key={idx} onClick={() => { setOrigin(airport.name); setShowOrigin(false); setShowDest(true); }} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-xl cursor-pointer transition-colors group">
                               <div className="flex items-center gap-3">
                                 <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg text-gray-500 group-hover:bg-white dark:group-hover:bg-gray-700 transition-colors shadow-sm">
                                   <Plane size={18} className="transform -rotate-45" />
@@ -192,7 +193,7 @@ export default function HeroSection() {
                       <div className="absolute top-[calc(100%+8px)] left-0 md:left-4 bg-white dark:bg-[#1a2b3c] rounded-[1rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-2 z-50 w-full min-w-[320px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-2">
                         <div className="max-h-64 overflow-y-auto scrollbar-thin">
                           {MOCK_AIRPORTS.map((airport, idx) => (
-                            <div key={idx} onClick={() => { setDest(airport.name); setShowDest(false); }} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-xl cursor-pointer transition-colors group">
+                            <div key={idx} onClick={() => { setDest(airport.name); setShowDest(false); setShowCalendar(true); setActiveDateInput('aller'); }} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-xl cursor-pointer transition-colors group">
                               <div className="flex items-center gap-3">
                                 <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg text-gray-500 group-hover:bg-white dark:group-hover:bg-gray-700 transition-colors shadow-sm">
                                   <Plane size={18} className="transform rotate-45" />
