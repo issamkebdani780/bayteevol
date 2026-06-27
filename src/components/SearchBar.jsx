@@ -88,7 +88,7 @@ export default function SearchBar({ containerClassName }) {
           <div className="flex-1 relative">
             <input
               type="text"
-              placeholder="De..."
+              placeholder="Where from"
               value={origin}
               onChange={(e) => setOrigin(e.target.value)}
               onFocus={() => { setShowOrigin(true); setShowDest(false); setShowCalendar(false); setShowPassengers(false); }}
@@ -127,7 +127,7 @@ export default function SearchBar({ containerClassName }) {
           <div className="flex-1 relative">
             <input
               type="text"
-              placeholder="À..."
+              placeholder="Where to"
               value={dest}
               onChange={(e) => setDest(e.target.value)}
               onFocus={() => { setShowDest(true); setShowOrigin(false); setShowCalendar(false); setShowPassengers(false); }}

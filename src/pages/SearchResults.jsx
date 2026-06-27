@@ -157,13 +157,13 @@ export default function SearchResults() {
                   <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-gold-600" />
                   
                   {/* Left Side: Flight Info */}
-                  <div className="flex-grow flex flex-col justify-between pl-4">
-                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 font-bold mb-6 text-sm">
+                  <div className="flex-grow flex flex-col justify-between pl-2 md:pl-4 min-w-0">
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 font-bold mb-4 md:mb-6 text-sm">
                       <Calendar size={16} />
                       <span>{flight.date}</span>
                     </div>
                     
-                    <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-6">
+                    <div className="flex flex-wrap xl:flex-nowrap items-center justify-between gap-4 xl:gap-6 min-w-0">
                       <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center p-2 border border-gray-100 shadow-sm">
                         <img src={flight.logo} alt={flight.airline} className="max-w-full max-h-full object-contain" />
                       </div>
@@ -210,7 +210,7 @@ export default function SearchResults() {
                   </div>
                   
                   {/* Right Side: Pricing */}
-                  <div className="xl:w-64 xl:pl-8 xl:border-l border-gray-100 dark:border-gray-800 flex flex-col items-center xl:items-end justify-center gap-2 mt-6 xl:mt-0 pt-6 xl:pt-0 border-t xl:border-t-0">
+                  <div className="xl:w-64 shrink-0 xl:pl-8 xl:border-l border-gray-100 dark:border-gray-800 flex flex-col items-center xl:items-end justify-center gap-2 mt-6 xl:mt-0 pt-6 xl:pt-0 border-t xl:border-t-0">
                     <a href="#" className="text-blue-500 hover:underline text-[15px] font-bold mb-1">
                       Détails du vol
                     </a>
