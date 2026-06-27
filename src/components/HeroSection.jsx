@@ -1,15 +1,45 @@
-import { ShieldCheck, Tag, Zap, HeadphonesIcon, Search, Plane, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ShieldCheck, Tag, Zap, HeadphonesIcon, Search, Plane, ChevronDown, ChevronLeft, ChevronRight, X, Plus, Minus } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+
+const MOCK_AIRPORTS = [
+  { name: "Houari Boumediene", location: "Algiers, Algeria", code: "ALG" },
+  { name: "Aéroport international de Mohamed Boudiaf Constantine", location: "Constantine, Algérie", code: "CZL" },
+  { name: "Oran Es Senia Apt", location: "Oran, Algeria", code: "ORN" },
+  { name: "Aéroport Rabah Bitat Airport Annaba", location: "Annaba, Algérie", code: "AAE" },
+];
 
 export default function HeroSection() {
   const navigate = useNavigate()
   const [showCalendar, setShowCalendar] = useState(false)
+  const [showOrigin, setShowOrigin] = useState(false)
+  const [showDest, setShowDest] = useState(false)
+  const [showPassengers, setShowPassengers] = useState(false)
+
+  const [origin, setOrigin] = useState('')
+  const [dest, setDest] = useState('')
+  const [dateAller, setDateAller] = useState('')
+  const [dateRetour, setDateRetour] = useState('')
+  const [activeDateInput, setActiveDateInput] = useState('aller')
+  const [adults, setAdults] = useState(1)
+  const [children, setChildren] = useState(0)
+  const [infants, setInfants] = useState(0)
+
+  const handleDateSelect = (day, month) => {
+    const dateStr = `${day} ${month} 2026`;
+    if (activeDateInput === 'aller') {
+      setDateAller(dateStr);
+      setActiveDateInput('retour');
+    } else {
+      setDateRetour(dateStr);
+      setShowCalendar(false);
+    }
+  }
 
   return (
-    <section className="relative min-h-[110vh] flex items-center justify-center pt-40 pb-10 overflow-hidden perspective-1000">
+    <section className="relative min-h-[110vh] flex items-center justify-center pt-40 pb-10 perspective-1000 z-20">
       {/* Parallax Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src="/aviation-hero-bg.png"
           alt="Aviation background"
@@ -111,19 +141,73 @@ export default function HeroSection() {
                 {/* De... & À... */}
                 <div className="flex flex-col md:flex-row flex-[1.5] relative">
                   <div className="flex-1 relative">
-                    <input type="text" placeholder="De..." className="w-full pl-6 pr-10 py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white placeholder-slate-400 font-bold text-xl" />
+                    <input
+                      type="text"
+                      placeholder="De..."
+                      value={origin}
+                      onChange={(e) => setOrigin(e.target.value)}
+                      onFocus={() => { setShowOrigin(true); setShowDest(false); setShowCalendar(false); setShowPassengers(false); }}
+                      className="w-full pl-6 pr-10 py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white placeholder-slate-400 font-bold text-xl cursor-pointer"
+                    />
+                    {showOrigin && (
+                      <div className="absolute top-[calc(100%+8px)] left-0 bg-white dark:bg-[#1a2b3c] rounded-[1rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-2 z-50 w-full min-w-[320px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-2">
+                        <div className="max-h-64 overflow-y-auto scrollbar-thin">
+                          {MOCK_AIRPORTS.map((airport, idx) => (
+                            <div key={idx} onClick={() => { setOrigin(airport.name); setShowOrigin(false); }} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-xl cursor-pointer transition-colors group">
+                              <div className="flex items-center gap-3">
+                                <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg text-gray-500 group-hover:bg-white dark:group-hover:bg-gray-700 transition-colors shadow-sm">
+                                  <Plane size={18} className="transform -rotate-45" />
+                                </div>
+                                <div className="text-left">
+                                  <div className="font-bold text-[15px]">{airport.name}</div>
+                                  <div className="text-gray-500 dark:text-gray-400 text-[13px]">{airport.location}</div>
+                                </div>
+                              </div>
+                              <div className="bg-[#fff3eb] text-[#ff6a00] font-bold text-sm px-2 py-1 rounded-md">{airport.code}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Swap button md */}
-                  <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-gray-100 dark:border-gray-700 bg-white dark:bg-[#1e2b3c] text-[#d4af37] items-center justify-center hover:bg-gray-50 dark:hover:bg-[#1a2b3c] transition-all cursor-pointer shadow-sm">
+                  <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-gray-100 dark:border-gray-700 bg-white dark:bg-[#1e2b3c] text-[#ff6a00] items-center justify-center hover:bg-gray-50 dark:hover:bg-[#1a2b3c] transition-all cursor-pointer shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M17 10h-14l4-4" />
                       <path d="M7 14h14l-4 4" />
                     </svg>
                   </div>
 
-                  <div className="flex-1">
-                    <input type="text" placeholder="À..." className="w-full pl-6 md:pl-10 pr-6 py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white placeholder-slate-400 font-bold text-xl" />
+                  <div className="flex-1 relative">
+                    <input
+                      type="text"
+                      placeholder="À..."
+                      value={dest}
+                      onChange={(e) => setDest(e.target.value)}
+                      onFocus={() => { setShowDest(true); setShowOrigin(false); setShowCalendar(false); setShowPassengers(false); }}
+                      className="w-full pl-6 md:pl-10 pr-6 py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white placeholder-slate-400 font-bold text-xl cursor-pointer"
+                    />
+                    {showDest && (
+                      <div className="absolute top-[calc(100%+8px)] left-0 md:left-4 bg-white dark:bg-[#1a2b3c] rounded-[1rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-2 z-50 w-full min-w-[320px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-2">
+                        <div className="max-h-64 overflow-y-auto scrollbar-thin">
+                          {MOCK_AIRPORTS.map((airport, idx) => (
+                            <div key={idx} onClick={() => { setDest(airport.name); setShowDest(false); }} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-xl cursor-pointer transition-colors group">
+                              <div className="flex items-center gap-3">
+                                <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg text-gray-500 group-hover:bg-white dark:group-hover:bg-gray-700 transition-colors shadow-sm">
+                                  <Plane size={18} className="transform rotate-45" />
+                                </div>
+                                <div className="text-left">
+                                  <div className="font-bold text-[15px]">{airport.name}</div>
+                                  <div className="text-gray-500 dark:text-gray-400 text-[13px]">{airport.location}</div>
+                                </div>
+                              </div>
+                              <div className="bg-[#fff3eb] text-[#ff6a00] font-bold text-sm px-2 py-1 rounded-md">{airport.code}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -134,9 +218,10 @@ export default function HeroSection() {
                   <input
                     type="text"
                     placeholder="Votre aller"
+                    value={dateAller}
                     readOnly
-                    onClick={() => setShowCalendar(!showCalendar)}
-                    className="w-full px-5 py-4 outline-none bg-transparent text-slate-500 dark:text-slate-300 placeholder-slate-400 font-medium text-[16px] cursor-pointer"
+                    onClick={() => { setShowCalendar(true); setActiveDateInput('aller'); setShowOrigin(false); setShowDest(false); setShowPassengers(false); }}
+                    className={`w-full px-5 py-4 outline-none bg-transparent placeholder-slate-400 font-bold text-[16px] cursor-pointer ${activeDateInput === 'aller' && showCalendar ? 'text-brand-gold-500' : 'text-[#1e2b3c] dark:text-white'}`}
                   />
                 </div>
 
@@ -146,18 +231,74 @@ export default function HeroSection() {
                   <input
                     type="text"
                     placeholder="Votre retour"
+                    value={dateRetour}
                     readOnly
-                    onClick={() => setShowCalendar(!showCalendar)}
-                    className="w-full px-5 py-4 outline-none bg-transparent text-slate-500 dark:text-slate-300 placeholder-slate-400 font-medium text-[16px] cursor-pointer"
+                    onClick={() => { setShowCalendar(true); setActiveDateInput('retour'); setShowOrigin(false); setShowDest(false); setShowPassengers(false); }}
+                    className={`w-full px-5 py-4 outline-none bg-transparent placeholder-slate-400 font-bold text-[16px] cursor-pointer ${activeDateInput === 'retour' && showCalendar ? 'text-brand-gold-500' : 'text-[#1e2b3c] dark:text-white'}`}
                   />
                 </div>
 
                 <div className="hidden lg:block w-[1px] h-12 bg-gray-100 dark:bg-gray-700 mx-1"></div>
 
                 {/* Passenger & Search */}
-                <div className="flex-[1.2] flex items-center justify-between pl-5 pr-1 min-w-[220px]">
-                  <input type="text" defaultValue="1 passager, économique" className="w-full py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white font-bold text-[15px]" />
-                  <button onClick={() => navigate('/search')} className="w-14 h-14 rounded-2xl bg-[#d4af37] hover:bg-[#c39b6b] text-white flex items-center justify-center transition-all shadow-md flex-shrink-0 cursor-pointer">
+                <div className="flex-[1.2] flex items-center justify-between pl-5 pr-1 min-w-[220px] relative">
+                  <input
+                    type="text"
+                    value={`${adults + children + infants} passager${adults + children + infants > 1 ? 's' : ''}, économique`}
+                    readOnly
+                    onClick={() => { setShowPassengers(!showPassengers); setShowCalendar(false); setShowOrigin(false); setShowDest(false); }}
+                    className="w-full py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white font-bold text-[15px] cursor-pointer"
+                  />
+                  {showPassengers && (
+                    <div className="absolute top-[calc(100%+8px)] right-0 bg-white dark:bg-[#1a2b3c] rounded-[1.5rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-6 z-50 w-full min-w-[340px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-2">
+                      <div className="flex justify-between items-center mb-4">
+                        <h3 className="font-bold text-[17px]">Passagers</h3>
+                        <button onClick={() => setShowPassengers(false)} className="text-gray-400 hover:text-gray-600">
+                          <X size={20} className="text-[#0e9f6e] dark:text-brand-emerald-500" />
+                        </button>
+                      </div>
+
+                      <div className="space-y-5">
+                        <div className="flex items-center justify-between">
+                          <div className="text-left">
+                            <div className="font-bold text-[15px]">Adulte(s)</div>
+                            <div className="text-[13px] text-gray-500">12 ans et plus</div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <button onClick={() => setAdults(Math.max(1, adults - 1))} className="w-8 h-8 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"><Minus size={16} /></button>
+                            <span className="font-bold w-4 text-center">{adults}</span>
+                            <button onClick={() => setAdults(adults + 1)} className="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-700 transition-colors"><Plus size={16} /></button>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
+                          <div className="text-left">
+                            <div className="font-bold text-[15px]">Enfant(s)</div>
+                            <div className="text-[13px] text-gray-500">De 2 à 11 ans</div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <button onClick={() => setChildren(Math.max(0, children - 1))} className="w-8 h-8 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"><Minus size={16} /></button>
+                            <span className="font-bold w-4 text-center">{children}</span>
+                            <button onClick={() => setChildren(children + 1)} className="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-700 transition-colors"><Plus size={16} /></button>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
+                          <div className="text-left">
+                            <div className="font-bold text-[15px]">Bébé(s)</div>
+                            <div className="text-[13px] text-gray-500">Moins de 2 ans</div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <button onClick={() => setInfants(Math.max(0, infants - 1))} className="w-8 h-8 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"><Minus size={16} /></button>
+                            <span className="font-bold w-4 text-center">{infants}</span>
+                            <button onClick={() => setInfants(infants + 1)} className="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-700 transition-colors"><Plus size={16} /></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <button onClick={() => navigate('/search')} className="w-14 h-14 rounded-2xl bg-[#ff6a00] hover:bg-[#e65f00] text-white flex items-center justify-center transition-all shadow-md flex-shrink-0 cursor-pointer z-10">
                     <Search size={24} strokeWidth={2.5} />
                   </button>
                 </div>
@@ -183,11 +324,15 @@ export default function HeroSection() {
                           <div>Lu</div><div>Ma</div><div>Me</div><div>Je</div><div>Ve</div><div>Sa</div><div>Di</div>
                         </div>
                         <div className="grid grid-cols-7 gap-y-3 gap-x-1 text-center text-[14px] font-medium">
-                          <div className="text-gray-300">1</div><div className="text-gray-300">2</div><div className="text-gray-300">3</div><div className="text-gray-300">4</div><div className="text-gray-300">5</div><div className="text-gray-300">6</div><div className="text-gray-300">7</div>
-                          <div className="text-gray-300">8</div><div className="text-gray-300">9</div><div className="text-gray-300">10</div><div className="text-gray-300">11</div><div className="text-gray-300">12</div><div className="text-gray-300">13</div><div className="text-gray-300">14</div>
-                          <div className="text-gray-300">15</div><div className="text-gray-300">16</div><div className="text-gray-300">17</div><div className="text-gray-300">18</div><div className="text-gray-300">19</div><div className="text-gray-300">20</div><div className="text-gray-300">21</div>
-                          <div className="text-gray-300">22</div><div className="text-gray-300">23</div><div className="text-gray-300">24</div><div className="text-gray-300">25</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">26</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">27</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">28</div>
-                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">29</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">30</div><div className="opacity-0">31</div><div className="opacity-0">1</div><div className="opacity-0">2</div><div className="opacity-0">3</div><div className="opacity-0">4</div>
+                          {Array.from({ length: 25 }, (_, i) => i + 1).map((day) => (
+                            <div key={day} className="text-gray-300 dark:text-gray-600">{day}</div>
+                          ))}
+                          {Array.from({ length: 5 }, (_, i) => i + 26).map((day) => (
+                            <div key={day} onClick={() => handleDateSelect(day, 'Jun')} className="font-bold cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-1">{day}</div>
+                          ))}
+                          {Array.from({ length: 5 }, (_, i) => i + 1).map((day) => (
+                            <div key={`empty-${day}`} className="opacity-0">{day}</div>
+                          ))}
                         </div>
                       </div>
                       {/* July */}
@@ -196,11 +341,11 @@ export default function HeroSection() {
                           <div>Lu</div><div>Ma</div><div>Me</div><div>Je</div><div>Ve</div><div>Sa</div><div>Di</div>
                         </div>
                         <div className="grid grid-cols-7 gap-y-3 gap-x-1 text-center text-[14px] font-medium">
-                          <div className="opacity-0">29</div><div className="opacity-0">30</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">1</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">2</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">3</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">4</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">5</div>
-                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">6</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">7</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">8</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">9</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">10</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">11</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">12</div>
-                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">13</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">14</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">15</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">16</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">17</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">18</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">19</div>
-                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">20</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">21</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">22</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">23</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">24</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">25</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">26</div>
-                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">27</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">28</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">29</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">30</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">31</div><div className="opacity-0">1</div><div className="opacity-0">2</div>
+                          <div className="opacity-0">29</div><div className="opacity-0">30</div>
+                          {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
+                            <div key={day} onClick={() => handleDateSelect(day, 'Jul')} className="font-bold cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-1">{day}</div>
+                          ))}
+                          <div className="opacity-0">1</div><div className="opacity-0">2</div>
                         </div>
                       </div>
                     </div>
