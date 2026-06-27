@@ -1,8 +1,17 @@
 import { Calendar, Briefcase, ChevronRight, ChevronDown, User, Plane, Edit2, MessageCircle } from 'lucide-react'
 import { useState } from 'react'
+import SearchBar from '../components/SearchBar'
 
 export default function SearchResults() {
   const [priceRange, setPriceRange] = useState(65161)
+
+  const topAirlines = [
+    { name: 'Ajet', price: '18 841,00 DZD', logo: '/air/ajet.png', fallback: 'AJ' },
+    { name: 'Turkish Airlines', price: '54 665,00 DZD', logo: '/air/images.png', fallback: 'TK' },
+    { name: 'Air Algerie', price: '60 010,00 DZD', logo: '/air/Air-Alger.png', fallback: 'AH' },
+    { name: 'Ita Airways', price: '60 772,00 DZD', logo: '/air/ita.png', fallback: 'IT' },
+    { name: 'Lufthansa', price: '62 500,00 DZD', logo: '/air/lufthansa.png', fallback: 'LH' }
+  ]
 
   const flights = [
     { 
@@ -39,32 +48,7 @@ export default function SearchResults() {
       <div className="container mx-auto px-6 max-w-7xl">
         
         {/* Search Summary Bar */}
-        <div className="bg-white dark:bg-[#1a2b3c] rounded-[2rem] shadow-sm border border-gray-100 dark:border-gray-800 p-4 mb-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-4 text-sm font-bold text-slate-700 dark:text-slate-300 ml-4">
-            <div className="flex items-center gap-2">
-              <Plane size={18} className="text-[#d4af37]" />
-              <span className="truncate max-w-[200px] md:max-w-[300px]">Aéroport international de Mohamed Boudiaf Constantine...</span>
-            </div>
-            <div className="hidden md:block w-px h-5 bg-gray-200 dark:bg-gray-700"></div>
-            <div className="flex items-center gap-2">
-              <Calendar size={18} className="text-slate-400" />
-              <span>27 juin 2026</span>
-            </div>
-            <div className="hidden md:block w-px h-5 bg-gray-200 dark:bg-gray-700"></div>
-            <div className="flex items-center gap-2">
-              <User size={18} className="text-slate-400" />
-              <span>1 Passager</span>
-            </div>
-            <div className="hidden md:block w-px h-5 bg-gray-200 dark:bg-gray-700"></div>
-            <div className="flex items-center gap-2">
-              <Briefcase size={18} className="text-slate-400" />
-              <span>Classe Économique</span>
-            </div>
-          </div>
-          <button className="bg-[#f97316] text-white p-3.5 rounded-full hover:bg-[#ea580c] transition-colors shadow-md mr-1">
-            <Edit2 size={18} />
-          </button>
-        </div>
+        <SearchBar containerClassName="bg-white dark:bg-[#1a2b3c] rounded-[2rem] shadow-sm border border-gray-100 dark:border-gray-800 p-4 md:p-6 mb-10 w-full" />
 
         <div className="flex flex-col lg:flex-row gap-8">
           
@@ -117,34 +101,37 @@ export default function SearchResults() {
                 </div>
               </div>
 
-              {/* Airlines Filter */}
-              <div className="mb-8 border-t border-gray-100 dark:border-gray-800 pt-6">
-                <div className="flex justify-between items-center mb-4">
-                  <h4 className="font-bold text-[#1a2b3c] dark:text-white flex items-center gap-2 text-[15px]">
-                    <ChevronDown size={16} /> Compagnies aériennes
-                  </h4>
-                  <span className="text-xs text-slate-400 font-medium cursor-pointer hover:text-slate-600">Effacer</span>
-                </div>
-                <div className="space-y-4 px-2">
-                  <label className="flex items-center gap-3 cursor-pointer group">
-                    <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#f97316] focus:ring-[#f97316] cursor-pointer" defaultChecked />
-                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400 flex items-center gap-2 group-hover:text-slate-900 transition-colors">
-                      Turkish Airlines
-                    </span>
-                  </label>
-                  <label className="flex items-center gap-3 cursor-pointer group">
-                    <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#f97316] focus:ring-[#f97316] cursor-pointer" />
-                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400 flex items-center gap-2 group-hover:text-slate-900 transition-colors">
-                      Air Algerie
-                    </span>
-                  </label>
-                </div>
-              </div>
             </div>
           </aside>
 
           {/* Main Content */}
-          <div className="flex-grow">
+          <div className="flex-grow overflow-hidden">
+            {/* Top Airlines Carousel */}
+            <div className="flex gap-3 overflow-x-auto pb-4 mb-4 scrollbar-none">
+              {topAirlines.map((airline, idx) => (
+                <div key={idx} className="bg-white dark:bg-[#1a2b3c]/80 border border-gray-100 dark:border-gray-800 rounded-2xl p-3 flex items-center gap-4 min-w-[220px] shadow-sm hover:shadow-md transition-all cursor-pointer shrink-0">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 overflow-hidden bg-white">
+                    <img 
+                      src={airline.logo} 
+                      alt={airline.name} 
+                      className="w-[85%] h-[85%] object-contain" 
+                      onError={(e) => { 
+                        e.target.style.display = 'none'; 
+                        e.target.nextSibling.style.display = 'flex'; 
+                      }} 
+                    />
+                    <div style={{display: 'none'}} className="w-full h-full items-center justify-center font-bold text-[#1e3a5f] text-sm bg-blue-50">
+                      {airline.fallback}
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[13px] font-bold text-slate-500 dark:text-slate-400">{airline.name}</span>
+                    <span className="text-[15px] font-black text-[#1a2b3c] dark:text-white leading-tight">{airline.price}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             {/* Sort Tabs */}
             <div className="flex flex-wrap items-center gap-8 mb-6 text-[15px] font-bold text-slate-500 dark:text-slate-400 border-b border-gray-200 dark:border-gray-800 pb-4">
               <button className="flex items-center gap-1 hover:text-[#1a2b3c] dark:hover:text-white transition-colors">Heure de départ <ChevronDown size={16} /></button>

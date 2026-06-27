@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import SearchResults from './pages/SearchResults'
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true)
+  const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
     if (darkMode) {
