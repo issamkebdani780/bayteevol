@@ -5,14 +5,14 @@ import { useState } from 'react'
 export default function HeroSection() {
   const navigate = useNavigate()
   const [showCalendar, setShowCalendar] = useState(false)
-  
+
   return (
     <section className="relative min-h-[110vh] flex items-center justify-center pt-40 pb-10 overflow-hidden perspective-1000">
       {/* Parallax Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/aviation-hero-bg.png" 
-          alt="Aviation background" 
+        <img
+          src="/aviation-hero-bg.png"
+          alt="Aviation background"
           className="w-full h-[120%] object-cover opacity-80 dark:opacity-60 mix-blend-overlay dark:mix-blend-normal"
         />
         {/* <div className="absolute inset-0 bg-gradient-to-b from-brand-emerald-50/50 via-brand-emerald-50/80 to-brand-emerald-50 dark:from-brand-emerald-950/80 dark:via-brand-emerald-950/90 dark:to-brand-emerald-950" /> */}
@@ -23,8 +23,8 @@ export default function HeroSection() {
           {/* Floating UI Element (Abstract Ticket) */}
           <div className="absolute -top-12 -left-2 ml-10 lg:-left-24 hidden md:flex flex-col gap-3 bg-[#e9e1d8] p-5 rounded-3xl shadow-xl w-56 text-left floating-ticket z-20">
             <div className="flex justify-between items-center text-[15px] font-extrabold text-[#1a2b3c] tracking-wide">
-              <span>ALG</span> 
-              <Plane size={16} strokeWidth={2} className="text-[#1a2b3c]" /> 
+              <span>ALG</span>
+              <Plane size={16} strokeWidth={2} className="text-[#1a2b3c]" />
               <span>IST</span>
             </div>
             <div className="h-2 bg-[#cbd5e1] rounded-full w-full overflow-hidden">
@@ -54,7 +54,7 @@ export default function HeroSection() {
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gold-500 blur-sm opacity-50" />
             </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-brand-emerald-800 dark:text-brand-emerald-100 mb-12 max-w-3xl mx-auto leading-relaxed">
             Experience the world's most advanced flight booking platform. Smart, fast, and beautifully simple.
           </p>
@@ -63,9 +63,9 @@ export default function HeroSection() {
           <div className="relative max-w-5xl mx-auto mb-16">
             {/* Widget Glow Background */}
             <div className="absolute -inset-4 bg-brand-gold-500/20 dark:bg-brand-gold-500/10 blur-2xl rounded-full animate-pulse" />
-            
+
             <div className="relative bg-white/70 dark:bg-brand-emerald-900/70 backdrop-blur-2xl p-5 md:p-6 rounded-[2rem] shadow-2xl border border-white/50 dark:border-white/10 transition-all duration-300 text-left">
-              
+
               {/* Top Row */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5 text-[15px] font-semibold text-brand-emerald-800 dark:text-brand-emerald-100 px-1">
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -85,7 +85,7 @@ export default function HeroSection() {
                     <span>Multi-ville</span>
                   </label>
                 </div>
-                
+
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
                   <label className="flex items-center gap-2 cursor-pointer group">
                     <input type="checkbox" className="hidden" />
@@ -107,13 +107,13 @@ export default function HeroSection() {
 
               {/* Main Search Bar */}
               <div className="flex flex-col lg:flex-row items-stretch lg:items-center bg-white dark:bg-[#1e2b3c] rounded-[1.5rem] shadow-md p-1.5 gap-2 lg:gap-0 mt-2 relative">
-                
+
                 {/* De... & À... */}
                 <div className="flex flex-col md:flex-row flex-[1.5] relative">
                   <div className="flex-1 relative">
                     <input type="text" placeholder="De..." className="w-full pl-6 pr-10 py-4 outline-none bg-transparent text-[#1e2b3c] dark:text-white placeholder-slate-400 font-bold text-xl" />
                   </div>
-                  
+
                   {/* Swap button md */}
                   <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-gray-100 dark:border-gray-700 bg-white dark:bg-[#1e2b3c] text-[#d4af37] items-center justify-center hover:bg-gray-50 dark:hover:bg-[#1a2b3c] transition-all cursor-pointer shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -131,24 +131,24 @@ export default function HeroSection() {
 
                 {/* Dates */}
                 <div className="flex-1 min-w-[130px] relative">
-                  <input 
-                    type="text" 
-                    placeholder="Votre aller" 
+                  <input
+                    type="text"
+                    placeholder="Votre aller"
                     readOnly
                     onClick={() => setShowCalendar(!showCalendar)}
-                    className="w-full px-5 py-4 outline-none bg-transparent text-slate-500 dark:text-slate-300 placeholder-slate-400 font-medium text-[16px] cursor-pointer" 
+                    className="w-full px-5 py-4 outline-none bg-transparent text-slate-500 dark:text-slate-300 placeholder-slate-400 font-medium text-[16px] cursor-pointer"
                   />
                 </div>
-                
+
                 <div className="hidden lg:block w-[1px] h-12 bg-gray-100 dark:bg-gray-700 mx-1"></div>
 
                 <div className="flex-1 min-w-[130px] relative">
-                  <input 
-                    type="text" 
-                    placeholder="Votre retour" 
+                  <input
+                    type="text"
+                    placeholder="Votre retour"
                     readOnly
                     onClick={() => setShowCalendar(!showCalendar)}
-                    className="w-full px-5 py-4 outline-none bg-transparent text-slate-500 dark:text-slate-300 placeholder-slate-400 font-medium text-[16px] cursor-pointer" 
+                    className="w-full px-5 py-4 outline-none bg-transparent text-slate-500 dark:text-slate-300 placeholder-slate-400 font-medium text-[16px] cursor-pointer"
                   />
                 </div>
 
@@ -165,47 +165,48 @@ export default function HeroSection() {
                 {/* Mock Calendar Popover */}
                 {showCalendar && (
                   <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-[35%] xl:left-[38%] bg-white dark:bg-[#1a2b3c] rounded-[1.5rem] shadow-2xl border border-gray-100 dark:border-gray-800 p-6 z-50 w-full max-w-[600px] text-[#1e2b3c] dark:text-white animate-in fade-in slide-in-from-top-4 duration-200">
-                  <div className="flex items-center justify-between mb-6">
-                    <button className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full text-slate-400 hover:text-slate-600 transition-colors">
-                      <ChevronLeft size={20} />
-                    </button>
-                    <div className="flex-1 text-center font-bold text-[17px]">Jun 2026</div>
-                    <div className="flex-1 text-center font-bold text-[17px]">Jul 2026</div>
-                    <button className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full text-slate-400 hover:text-slate-600 transition-colors">
-                      <ChevronRight size={20} />
-                    </button>
-                  </div>
-                  
-                  <div className="flex gap-8">
-                    {/* June */}
-                    <div className="flex-1">
-                      <div className="grid grid-cols-7 gap-1 text-center text-[13px] font-bold text-slate-400 mb-4">
-                        <div>Lu</div><div>Ma</div><div>Me</div><div>Je</div><div>Ve</div><div>Sa</div><div>Di</div>
+                    <div className="flex items-center justify-between mb-6">
+                      <button className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full text-slate-400 hover:text-slate-600 transition-colors">
+                        <ChevronLeft size={20} />
+                      </button>
+                      <div className="flex-1 text-center font-bold text-[17px]">Jun 2026</div>
+                      <div className="flex-1 text-center font-bold text-[17px]">Jul 2026</div>
+                      <button className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full text-slate-400 hover:text-slate-600 transition-colors">
+                        <ChevronRight size={20} />
+                      </button>
+                    </div>
+
+                    <div className="flex gap-8">
+                      {/* June */}
+                      <div className="flex-1">
+                        <div className="grid grid-cols-7 gap-1 text-center text-[13px] font-bold text-slate-400 mb-4">
+                          <div>Lu</div><div>Ma</div><div>Me</div><div>Je</div><div>Ve</div><div>Sa</div><div>Di</div>
+                        </div>
+                        <div className="grid grid-cols-7 gap-y-3 gap-x-1 text-center text-[14px] font-medium">
+                          <div className="text-gray-300">1</div><div className="text-gray-300">2</div><div className="text-gray-300">3</div><div className="text-gray-300">4</div><div className="text-gray-300">5</div><div className="text-gray-300">6</div><div className="text-gray-300">7</div>
+                          <div className="text-gray-300">8</div><div className="text-gray-300">9</div><div className="text-gray-300">10</div><div className="text-gray-300">11</div><div className="text-gray-300">12</div><div className="text-gray-300">13</div><div className="text-gray-300">14</div>
+                          <div className="text-gray-300">15</div><div className="text-gray-300">16</div><div className="text-gray-300">17</div><div className="text-gray-300">18</div><div className="text-gray-300">19</div><div className="text-gray-300">20</div><div className="text-gray-300">21</div>
+                          <div className="text-gray-300">22</div><div className="text-gray-300">23</div><div className="text-gray-300">24</div><div className="text-gray-300">25</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">26</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">27</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">28</div>
+                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">29</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">30</div><div className="opacity-0">31</div><div className="opacity-0">1</div><div className="opacity-0">2</div><div className="opacity-0">3</div><div className="opacity-0">4</div>
+                        </div>
                       </div>
-                      <div className="grid grid-cols-7 gap-y-3 gap-x-1 text-center text-[14px] font-medium">
-                        <div className="text-gray-300">1</div><div className="text-gray-300">2</div><div className="text-gray-300">3</div><div className="text-gray-300">4</div><div className="text-gray-300">5</div><div className="text-gray-300">6</div><div className="text-gray-300">7</div>
-                        <div className="text-gray-300">8</div><div className="text-gray-300">9</div><div className="text-gray-300">10</div><div className="text-gray-300">11</div><div className="text-gray-300">12</div><div className="text-gray-300">13</div><div className="text-gray-300">14</div>
-                        <div className="text-gray-300">15</div><div className="text-gray-300">16</div><div className="text-gray-300">17</div><div className="text-gray-300">18</div><div className="text-gray-300">19</div><div className="text-gray-300">20</div><div className="text-gray-300">21</div>
-                        <div className="text-gray-300">22</div><div className="text-gray-300">23</div><div className="text-gray-300">24</div><div className="text-gray-300">25</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">26</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">27</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">28</div>
-                        <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">29</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">30</div><div className="opacity-0">31</div><div className="opacity-0">1</div><div className="opacity-0">2</div><div className="opacity-0">3</div><div className="opacity-0">4</div>
+                      {/* July */}
+                      <div className="flex-1">
+                        <div className="grid grid-cols-7 gap-1 text-center text-[13px] font-bold text-slate-400 mb-4">
+                          <div>Lu</div><div>Ma</div><div>Me</div><div>Je</div><div>Ve</div><div>Sa</div><div>Di</div>
+                        </div>
+                        <div className="grid grid-cols-7 gap-y-3 gap-x-1 text-center text-[14px] font-medium">
+                          <div className="opacity-0">29</div><div className="opacity-0">30</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">1</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">2</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">3</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">4</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">5</div>
+                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">6</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">7</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">8</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">9</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">10</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">11</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">12</div>
+                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">13</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">14</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">15</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">16</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">17</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">18</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">19</div>
+                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">20</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">21</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">22</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">23</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">24</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">25</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">26</div>
+                          <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">27</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">28</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">29</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">30</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">31</div><div className="opacity-0">1</div><div className="opacity-0">2</div>
+                        </div>
                       </div>
                     </div>
-                    {/* July */}
-                    <div className="flex-1">
-                      <div className="grid grid-cols-7 gap-1 text-center text-[13px] font-bold text-slate-400 mb-4">
-                        <div>Lu</div><div>Ma</div><div>Me</div><div>Je</div><div>Ve</div><div>Sa</div><div>Di</div>
-                      </div>
-                      <div className="grid grid-cols-7 gap-y-3 gap-x-1 text-center text-[14px] font-medium">
-                        <div className="opacity-0">29</div><div className="opacity-0">30</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">1</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">2</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">3</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">4</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">5</div>
-                        <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">6</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">7</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">8</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">9</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">10</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">11</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">12</div>
-                        <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">13</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">14</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">15</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">16</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">17</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">18</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">19</div>
-                        <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">20</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">21</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">22</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">23</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">24</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">25</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">26</div>
-                        <div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">27</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">28</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">29</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">30</div><div className="font-bold cursor-pointer hover:bg-gray-100 rounded-lg p-1">31</div><div className="opacity-0">1</div><div className="opacity-0">2</div>
-                      </div>
-                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
 
               {/* Bottom Row */}
               <div className="mt-5 px-1 text-left">
@@ -224,7 +225,7 @@ export default function HeroSection() {
               { icon: Zap, text: "AI Smart Search" },
               { icon: HeadphonesIcon, text: "24/7 Support" }
             ].map((badge, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="flex items-center gap-3 cursor-default hover:-translate-y-1 transition-transform"
               >
